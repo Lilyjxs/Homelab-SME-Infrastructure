@@ -34,8 +34,9 @@ Domain Active Directory (`corp.homelab.internal`) di-*delegasikan* ke `dc-server
 ## Tantangan & Solusi
 
 | Tantangan | Solusi |
+|---|---|
 | Windows tidak resolve domain internal meski DNS sudah diset manual | Windows ternyata memakai resolver IPv6 link-local dari router; solusi: matikan IPv6 di adapter atau pastikan urutan prioritas DNS benar |
-| Query domain yang sudah didelegasikan tetap NXDOMAIN meski data zone sudah benar | Forwarder global (`8.8.8.8`) membajak query sebelum delegasi lokal sempat dipakai — diperbaiki dengan blok `type forward` khusus per-domain |
+| Query domain yang sudah didelegasikan tetap NXDOMAIN meski data zone sudah benar | Forwarder global (`8.8.8.8`) membajak query sebelum delegasi lokal sempat dipakai, lalu diperbaiki dengan blok `type forward` khusus per-domain |
 
 ## Verifikasi
 
@@ -46,6 +47,8 @@ nslookup -type=MX homelab.internal
 ```
 
 ## Screenshot
+![Hasil resolusi DNS](/images/dns3.png)
 
-![Hasil resolusi DNS](./images/dns.png)
-*Terminal menampilkan `nslookup`/`dig` berhasil resolve `homelab.internal`, `web.homelab.internal`, `mail.homelab.internal`, dan `corp.homelab.internal`, `familypet.com` ke IP yang benar.*
+!![Hasil resolusi DNS](/images/dns.png)
+![Hasil resolusi DNS](/images/dns2.png)
+*Terminal menampilkan `nslookup`/`dig` berhasil resolve `homelab.internal`, `web.homelab.internal`, `mail.homelab.internal`, `corp.homelab.internal`, dan `familypet.com` ke IP yang benar.*
