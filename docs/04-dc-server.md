@@ -38,16 +38,28 @@ Directory server ini awalnya berdiri sendiri atau standalone sebagai bukti konse
 
 ## Verifikasi
 
-```bash
 # test autentikasi Kerberos
-kinit administrator@CORP.HOMELAB.INTERNAL 
- # cek user terdaftar  
-samba-tool user list                    
-# cek SRV record AD    
+```bash
+kinit administrator@CORP.HOMELAB.INTERNAL
+```
+# cek user terdaftar
+```bash
+samba-tool user list 
+```
+# cek SRV record AD 
+```bash
 host -t SRV _ldap._tcp.corp.homelab.internal 
 ```
+# cek list keanggotaan grup
+```bash
+samba-tool group listmembers IT
+```
+   
+                   
+
 
 ## Screenshot
 
 ![Kerberos & user AD](/images/dc-server.png)
+
 *Terminal menampilkan `kinit` berhasil mendapat tiket Kerberos, dan `samba-tool user list` menunjukkan user/grup yang terdaftar di domain `CORP.HOMELAB.INTERNAL`.*

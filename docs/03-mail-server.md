@@ -60,4 +60,5 @@ Sent Mail
 
 Received Mail
 ![Roundcube inbox](/images/mail3.png)
+
 *Antarmuka webmail Roundcube menampilkan email yang berhasil dikirim dan diterima antar-user internal (`@homelab.internal`).*
