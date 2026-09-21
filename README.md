@@ -123,6 +123,4 @@ graph TB
 - Integrasi Active Directory dengan mail-server yaitu autentikasi IMAP/SMTP via AD, bukan lagi user Linux lokal
 - Private Certificate Authority untuk menghilangkan warning "Not Secure" pada HTTPS internal
 
-*Dokumentasi command-by-command yang lebih detail tersedia di [`command-reference.md`](./command-reference.md).*
-
-*atau jika ingin melihat hasilnya dapat dilihat pada Dokumentasi [`folder docs`](/docs/).*
+*Dokumentasi command-by-command yang lebih detail tersedia di [`command-reference.md`](./command-reference.md).* *atau jika ingin melihat hasilnya dapat dilihat pada Dokumentasi [`folder docs`](/docs/).*
