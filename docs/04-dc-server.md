@@ -38,25 +38,22 @@ Directory server ini awalnya berdiri sendiri atau standalone sebagai bukti konse
 
 ## Verifikasi
 
-# test autentikasi Kerberos
+test autentikasi Kerberos
 ```bash
 kinit administrator@CORP.HOMELAB.INTERNAL
 ```
-# cek user terdaftar
+cek user terdaftar
 ```bash
 samba-tool user list 
 ```
-# cek SRV record AD 
+cek SRV record AD 
 ```bash
 host -t SRV _ldap._tcp.corp.homelab.internal 
 ```
-# cek list keanggotaan grup
+cek list keanggotaan grup
 ```bash
 samba-tool group listmembers IT
 ```
-   
-                   
-
 
 ## Screenshot
 
