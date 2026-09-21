@@ -27,7 +27,7 @@ Isi config dengan email serta password yang udah didapatkan
 [smtp.gmail.com]:587    email@gmail.com:app-password
 ```
 
-Retention policy: **Keep Last: 1** — hanya backup terakhir yang disimpan per VM, backup lama otomatis dihapus setelah backup baru berhasil.
+Retention policy: **Keep Last: 1** hanya backup terakhir yang disimpan per VM, backup lama otomatis dihapus setelah backup baru berhasil.
 
 ## Tantangan & Solusi
 
