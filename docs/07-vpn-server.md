@@ -48,9 +48,11 @@ Diuji dari HP dalam mode data seluler dan device lain dengan jaringan yang berbe
 ## Screenshot
 
 Akses Dari HP ke website demo.homelab.internal
+
 ![VPN dari data seluler](/images/vpn-server1.jpeg)
 
 SSH ke VM monitor-server
+
 ![VPN dari data seluler](/images/vpn-server2.png)
 
 *HP maupun laptop dengan jaringan yang berbeda berhasil terhubung lewat Tailscale dan mengakses layanan internal, bukti remote access berfungsi dari luar jaringan rumah.*
