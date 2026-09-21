@@ -15,7 +15,7 @@ Meng-host portal internal kantor dan situs demo, sekaligus jadi tempat latihan k
 ## Konfigurasi Inti
 
 ```nginx
-# Dummy default_server — security hardening
+# Dummy default_server security hardening
 server {
     listen 80 default_server;
     server_name _;

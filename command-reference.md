@@ -6,9 +6,9 @@ command yang pernah dieksekusi, serta penjelasan singkat buat referensi kalau ke
 
 ## DNS Server (dns-server, 192.168.0.20)
 
-### Isi akhir zone file (contoh nyata)
+### Isi akhir zone file
 ```
-; /etc/bind/db.domain — forward zone homelab.internal
+; /etc/bind/db.domain => Isi file forward zone homelab.internal
 @       IN      NS      homelab.internal.
 @       IN      A       192.168.0.20
 @       IN      MX      10      mail.homelab.internal.
@@ -21,7 +21,7 @@ corp    IN      NS      dc-server.corp.homelab.internal.
 dc-server.corp.homelab.internal.  IN  A  192.168.0.23
 ```
 ```
-; /etc/bind/db.homelab — reverse zone 0.168.192.in-addr.arpa
+; /etc/bind/db.homelab => Isi file reverse zone 0.168.192.in-addr.arpa
 20      IN      PTR     ns.homelab.internal.
 21      IN      PTR     web.homelab.internal.
 22      IN      PTR     mail.homelab.internal.
@@ -66,7 +66,7 @@ nslookup -type=PTR IPNameServer
 ```
 nslookup homelab.internal          # dari Windows, cek Server yang dipakai
 ```
-Kalau muncul `Server: UnKnown` dengan `Address` berupa alamat IPv6 link-local (`fe80::...`) — itu tandanya Windows pakai resolver lain, bukan `192.168.0.20`. Fix bertahap:
+Kalau muncul `Server: UnKnown` dengan `Address` berupa alamat IPv6 link-local (`fe80::...`) bisa jadi itu tandanya Windows pakai resolver lain, bukan `192.168.0.20`. Fix bertahap:
 1. Set DNS manual di Settings > Network > adapter aktif > ganti ke Manual, isi Preferred DNS `192.168.0.20`.
 2. Kalau masih gagal, matikan IPv6 di adapter yang sama (banyak kasus Windows tetap prioritaskan resolver IPv6 walau DNS IPv4 sudah diset manual).
 3. `ipconfig /flushdns` lalu test ulang `nslookup homelab.internal`.
@@ -253,7 +253,7 @@ Di tiap server block HTTPS:
 add_header X-Frame-Options "SAMEORIGIN";
 add_header X-Content-Type-Options "nosniff";
 ```
-Verifikasi: `curl -I https://familypet.com -k` — cek tidak ada lagi baris `Server: nginx/1.24.0`, dan ada baris `X-Frame-Options`.
+Verifikasi: `curl -I https://familypet.com -k` cek tidak ada lagi baris `Server: nginx/1.24.0`, dan ada baris `X-Frame-Options`.
 
 ### Koneksi PHP ke MySQL/MariaDB
 ```bash
@@ -449,7 +449,7 @@ Login Roundcube via `https://mail.homelab.internal`, kirim & terima email antar-
 
 ---
 
-## Directory Server — Samba AD DC (dc-server, 192.168.0.23)
+## Directory Server, Samba AD DC (dc-server, 192.168.0.23)
 
 ### Persiapan VM & Sistem
 ```bash
@@ -621,7 +621,7 @@ Test ke BIND9, kalau NXDOMAIN padahal Samba oke, masalah ada di sisi BIND9, bisa
 ```bash
 dig +norecurse @192.168.0.20 corp.homelab.internal NS
 ```
-Cek data zone LOKAL BIND9 tanpa lanjut resolve — kalau ini muncul benar (ada AUTHORITY + ADDITIONAL section berisi NS & glue record), berarti config zone file sudah benar, masalah ada di logic forwarding, bukan data.
+Cek data zone LOKAL BIND9 tanpa lanjut resolve, kalau ini muncul benar (ada AUTHORITY + ADDITIONAL section berisi NS & glue record), berarti config zone file sudah benar, masalah ada di logic forwarding, bukan data.
 
 ```bash
 nslookup dc-server.corp.homelab.internal 192.168.0.20
@@ -665,7 +665,7 @@ Test login user biasa (bukan Administrator) untuk memastikan akun valid.
 
 ---
 
-## File Server — AD Domain Join (file-server, 192.168.0.24)
+## File Server, AD Domain Join (file-server, 192.168.0.24)
 
 Integrasi `file-server` (Samba standalone) menjadi domain member dari `dc-server` (Samba AD DC), sehingga autentikasi share pakai akun & grup Active Directory (`CORP.HOMELAB.INTERNAL`), bukan lagi user/grup Linux lokal. Ini yang bikin dc-server akhirnya punya fungsi operasional nyata, bukan cuma bukti konsep berdiri sendiri.
 
@@ -786,7 +786,7 @@ Login berhasil dan folder bisa diakses kalau user itu anggota grup AD yang sesua
 
 ---
 
-## Backup Server — Proxmox Backup Server (pbs-server, 192.168.0.25)
+## Backup Server, Proxmox Backup Server (pbs-server, 192.168.0.25)
 
 ### Persiapan VM
 ```bash
