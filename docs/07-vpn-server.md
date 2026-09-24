@@ -16,7 +16,7 @@ Bagian ini paling bernilai secara pembelajaran karena melibatkan *pivot* solusi 
 
 **Solusi akhir: Tailscale** sebagai subnet router pada VM yang sama, memakai protokol WireGuard yang sama di bawahnya, namun dengan NAT traversal otomatis (server relay) yang tidak membutuhkan port forwarding sama sekali.
 
-## Proses Diagnosis WireGuard (ringkas)
+## Proses Diagnosis WireGuard
 
 | Langkah Cek | Hasil |
 |---|---|
