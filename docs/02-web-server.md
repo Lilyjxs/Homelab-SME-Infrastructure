@@ -43,18 +43,26 @@ server {
 | Tantangan | Solusi |
 |---|---|
 | `duplicate default server` error saat menambah domain baru | Hanya boleh 1 file config yang punya flag `default_server` di seluruh `sites-enabled/` |
-| Closing brace `}` ter-*comment* tanpa sengaja atau adanya typo yang dimana bikin syntax error | Diperiksa dengan `nginx -t` dan `cat -n` untuk melacak baris persis |
+| Closing brace `}` ter-*comment* tanpa sengaja atau adanya typo yang di mana bikin syntax error | Diperiksa dengan `nginx -t` dan `cat -n` untuk melacak baris persis |
 
 ## Verifikasi
+Ada dua cara untuk mengecek apakah hasil yang sudah dilakukan berhasil:
 
+1. Menggunakan Command
+Mengecek sintaks config valid:
 ```bash
-# cek syntax config valid
-sudo nginx -t                   
-# isolasi antar-domain atau bisa langsung ke browser tulisan nama domain               
-curl -I -H "Host: familypet.com" http://192.168.0.21   
-# harus ditolak (444) via IP langsung atau bisa langsung ke browser
+sudo nginx -t                                       
+```
+Isolasi langsung antar domain dengan alamat yang dituju:
+```bash                              
+curl -I -H "Host: familypet.com" http://192.168.0.21              
+```
+Alamat IP web server tanpa domain harus ditolak:
+```bash
 curl -I http://192.168.0.21                    
 ```
+
+2. Menggunakan Browser
 
 ## Screenshot
 *192.168.0.21*
